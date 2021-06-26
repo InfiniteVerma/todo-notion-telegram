@@ -20,7 +20,7 @@ bot.onText(/\/add (.+)/, (msg, match) => {
 
     addTodoItem(resp);
 
-    bot.sendMessage(msg.chat.id, resp + " added to todo list.");
+    bot.sendMessage(msg.chat.id, "Added to list.");
 });
 
 bot.onText(/\/list/, async (msg, match) => {
