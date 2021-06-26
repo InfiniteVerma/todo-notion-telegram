@@ -1,6 +1,6 @@
 # todo-notion-telegram
 
-A todo telegram bot that writes and gets items from a [Notion](https://www.notion.so/) page. Telegram bot built using [node-telegram-bot-api](https://github.com/yagop/node-telegram-bot-api/).
+A telegram bot that adds and gets items from a [Notion](https://www.notion.so/) page. Made using [node-telegram-bot-api](https://github.com/yagop/node-telegram-bot-api/) and [notion-sdk-js](https://github.com/makenotion/notion-sdk-js).
 
 Telegram Bot               |  Notion Page    
 :-------------------------:|:-------------------------:
