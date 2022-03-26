@@ -1,6 +1,6 @@
-# todo-notion-telegram
+# Telegram Bot for Notion to-do list
 
-A telegram bot that adds and gets items from a [Notion](https://www.notion.so/) page. Made using [node-telegram-bot-api](https://github.com/yagop/node-telegram-bot-api/) and [notion-sdk-js](https://github.com/makenotion/notion-sdk-js).
+Use telegram to update your to-do list on [Notion](https://www.notion.so/)! Built using [node-telegram-bot-api](https://github.com/yagop/node-telegram-bot-api/) and [notion-sdk-js](https://github.com/makenotion/notion-sdk-js).
 
 Telegram Bot               |  Notion Page    
 :-------------------------:|:-------------------------:
