@@ -18,8 +18,8 @@ const listTodoItems = async () => {
     }));
 
     return todoListToString(texts);
-  } catch (error: any) {
-    console.error(error);
+  } catch (e: any) {
+    console.error(e.body);
   }
 };
 
@@ -54,22 +54,41 @@ const addTodoItem = async (item: string) => {
       ],
     });
 
-    console.log(response);
-
-    return response;
-  } catch (error: any) {
-    console.error(error.body);
+    return "Added to list.";
+  } catch (e: any) {
+    console.error(e.body);
+    return "Something went wrong";
   }
 };
 
+// get block ids and call delete on each
 const clearTodoList = async () => {
   try {
-    // const response = await notion.blocks.delete({
-    //   block_id: blockID!,
-    // });
+    const response = await notion.blocks.children.list({
+      block_id: blockID!,
+    });
 
-    // console.log(response);
-  } catch (e) {}
+    const ids = response.results.map((blocks) => blocks.id);
+
+    // const x = await Promise.all(
+    //   ids.map(async (id) => {
+    //     await notion.blocks.delete({
+    //       block_id: id,
+    //     });
+    //   })
+    // );
+
+    for (let id of ids) {
+      await notion.blocks.delete({
+        block_id: id,
+      });
+    }
+
+    return "Cleared";
+  } catch (e: any) {
+    console.log(e.body);
+    return "Something went wrong";
+  }
 };
 
 export { listTodoItems, addTodoItem, clearTodoList };
