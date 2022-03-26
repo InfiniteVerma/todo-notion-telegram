@@ -31,8 +31,9 @@ npm run dev
 
 ## Commands
 1. `/help`: List all commands
-2. `/list`: Show all items in Todo list
-3. `/add item`: Add _item_ to list
+2. `/list`: Show all items
+3. `/add item`: Add _item_
+4. `/clear`: Clear all items
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
