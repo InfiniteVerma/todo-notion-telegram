@@ -4,8 +4,7 @@ A telegram bot that adds and gets items from a [Notion](https://www.notion.so/) 
 
 Telegram Bot               |  Notion Page    
 :-------------------------:|:-------------------------:
-![](./screenshots/telegram_ss.jpg)  |![](./screenshots/notion_ss.jpg)  
-
+![](./screenshots/telegram_ss_new.jpeg)  |![image](https://user-images.githubusercontent.com/45547198/160228527-90c786a7-027a-455e-b29b-b232f235c81d.png)
 
 ## Installation
 
