@@ -57,6 +57,6 @@ bot.onText(/\/done (.+)/, async (msg, match) => {
 bot.onText(/\/help/, async (msg, match) => {
   bot.sendMessage(
     msg.chat.id,
-    "Commands List: \n1. /add <item>\n2. /list\n3. /clear"
+    "Commands List: \n1. /add <item>\n2. /list\n3. /done <item number>\n4. /clear"
   );
 });

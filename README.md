@@ -33,6 +33,7 @@ npm run dev
 1. `/help`: List all commands
 2. `/list`: Show all items
 3. `/add item`: Add _item_
+4. `/done <item number>`: Tick off _item_
 4. `/clear`: Clear all items
 
 ## Contributing
