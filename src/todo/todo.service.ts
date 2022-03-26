@@ -91,4 +91,44 @@ const clearTodoList = async () => {
   }
 };
 
-export { listTodoItems, addTodoItem, clearTodoList };
+const checkTodoItem = async (id: number) => {
+  try {
+    const response = await notion.blocks.children.list({
+      block_id: blockID!,
+    });
+
+    if (response.results.length <= id - 1 || id < 1) {
+      return "Item number could not be found. Verify by /list command.";
+    }
+
+    const data = response.results[id - 1];
+
+    if ((data as any).to_do.checked) {
+      return "Already done!";
+    }
+    
+    await notion.blocks.update({
+      block_id: data.id,
+
+      to_do: {
+        rich_text: [
+          {
+            type: "text",
+
+            text: {
+              content: (data as any).to_do.rich_text[0].text.content,
+            },
+          },
+        ],
+        checked: true,
+      },
+    });
+    
+    return "Checked item!";
+  } catch (e: any) {
+    console.log(e.body);
+    return "Something went wrong";
+  }
+};
+
+export { listTodoItems, addTodoItem, clearTodoList, checkTodoItem };

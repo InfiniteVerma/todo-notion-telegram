@@ -1,6 +1,11 @@
 import TelegramBot from "node-telegram-bot-api";
 import * as dotenv from "dotenv";
-import { addTodoItem, clearTodoList, listTodoItems } from "./todo/todo.service";
+import {
+  addTodoItem,
+  checkTodoItem,
+  clearTodoList,
+  listTodoItems,
+} from "./todo/todo.service";
 dotenv.config();
 
 const token = process.env.TOKEN;
@@ -37,15 +42,17 @@ bot.onText(/\/clear/, async (msg, match) => {
   bot.sendMessage(msg.chat.id, res);
 });
 
-// bot.onText(/\/done (.+)/, async (msg, match) => {
-//   const resp = parseInt(match![1]);
+bot.onText(/\/done (.+)/, async (msg, match) => {
+  const itemNumber = parseInt(match![1]);
 
-//   if (isNaN(resp)) {
-//     bot.sendMessage(msg.chat.id, "Not a valid number");
-//   } else {
-//     bot.sendMessage(msg.chat.id, "asdf");
-//   }
-// });
+  if (isNaN(itemNumber)) {
+    bot.sendMessage(msg.chat.id, "Not a valid number");
+  } else {
+    const res = await checkTodoItem(itemNumber);
+
+    bot.sendMessage(msg.chat.id, res);
+  }
+});
 
 bot.onText(/\/help/, async (msg, match) => {
   bot.sendMessage(
