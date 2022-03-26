@@ -1,4 +1,4 @@
-# Telegram Bot for Notion to-do list
+# todo-notion-telegram
 
 Use telegram to update your to-do list on [Notion](https://www.notion.so/)! Built using [node-telegram-bot-api](https://github.com/yagop/node-telegram-bot-api/) and [notion-sdk-js](https://github.com/makenotion/notion-sdk-js).
 
