@@ -1,5 +1,4 @@
 import { Client } from "@notionhq/client";
-import { ToDoBlock } from "@notionhq/client/build/src/api-types";
 import * as dotenv from "dotenv";
 import { todoListToString } from "./todo.interface";
 dotenv.config();
@@ -13,16 +12,14 @@ const listTodoItems = async () => {
       block_id: blockID!,
     });
 
-    const texts = response.results
-      .map((ele) => ele as ToDoBlock)
-      .map((item) => ({
-        text: item.to_do.text[0].plain_text,
-        isChecked: item.to_do.checked,
-      }));
+    const texts = response.results.map((item: any) => ({
+      text: item.to_do.rich_text[0].plain_text,
+      isChecked: item.to_do.checked,
+    }));
 
     return todoListToString(texts);
   } catch (error: any) {
-    console.error(error.body);
+    console.error(error);
   }
 };
 
@@ -32,20 +29,15 @@ const addTodoItem = async (item: string) => {
       block_id: blockID!,
       children: [
         {
-          id: "asdf",
-          created_time: Date.now().toString(),
-          last_edited_time: Date.now().toString(),
           object: "block",
           type: "to_do",
-          has_children: false,
           to_do: {
-            text: [
+            rich_text: [
               {
                 type: "text",
                 text: {
                   content: item,
                 },
-                plain_text: item,
                 annotations: {
                   bold: false,
                   italic: false,
@@ -70,8 +62,13 @@ const addTodoItem = async (item: string) => {
   }
 };
 
-const clearTodoList = () => {
+const clearTodoList = async () => {
   try {
+    // const response = await notion.blocks.delete({
+    //   block_id: blockID!,
+    // });
+
+    // console.log(response);
   } catch (e) {}
 };
 
